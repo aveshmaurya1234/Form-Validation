@@ -1,0 +1,135 @@
+<HTML>
+	<head>
+		<script>
+			function login()
+			{
+				let name=document.getElementById("name");
+				let pass=document.getElementById("pass");
+				let email=document.getElementById("email");
+				let phone=document.getElementById("phone");
+				let gender = document.querySelector('input[name="gender"]:checked');
+				let city = document.getElementById("city");
+				let terms = document.getElementById("terms");
+				if(name.value.trim()==="")
+				{
+					alert("Name can't be empty");
+					name.focus();
+					return false;	
+				}
+				else if(!isNaN(name.value))
+				{
+					alert("User name can't be a number...!!");
+					name.focus();
+					return false;
+				}
+				else if(pass.value.trim() === "")
+				{
+					alert("Passwrod can't be empty");
+					pass.focus();
+					return false;
+				}
+				else if(pass.value.length < 6 || pass.value.length > 8)
+				{
+					alert("Password length must be between 6 and 8 characters...!!");
+					pass.focus();
+					return false;
+				}
+				else if(email.value.trim()==="")
+				{
+					alert("Email can't be empty");
+					email.focus();
+					return false;	
+				}
+				else if(email.value.indexOf("@") == -1 || email.value.indexOf(".") == -1)
+				{
+					alert("Please enter a valid email address...!!");
+					email.focus();
+					return false;
+				}
+				else if(phone.value.trim()==="")
+				{
+					alert("phone number can't be empty");
+					phone.focus();
+					return false;	
+				}
+				else if (isNaN(phone.value) || phone.value.length !== 10) {
+					alert("Phone number must be exactly 10 digits and contain only numbers...!!");
+					phone.focus();
+					return false;
+				}
+				else if (!gender) {
+					alert("Please select your gender");
+					return false;
+				}
+				else if (city.value === "") {
+					alert("Please select your city");
+					city.focus();
+					return false;
+				}
+				else if (!terms.checked) {
+					alert("You must agree to the terms and conditions");
+					terms.focus();
+					return false;
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<form action="#" method="GET" onSubmit="return login();">
+		<TABLE border="1">
+			<tr>
+				<td>Name:</td>
+				<td><input type="text" id="name"></td>
+			</tr>
+			<tr>
+				<td>Password:</td> 
+				<td><input type="Password" id="pass"></td>
+			</tr>
+			<tr>
+				<td>Email:</td> 
+				<td><input type="text" id="email"></td>
+			</tr>
+			<tr>
+				<td>Phone Number</td>
+				<td><input type="tel" id="phone"></td>
+			</tr>
+			 <tr>
+                <td>Gender:</td>
+                <td>
+                    <input type="radio" name="gender" value="Male" id="male"> <label for="male">Male</label>
+                    <input type="radio" name="gender" value="Female" id="female"> <label for="female">Female</label>
+                </td>
+            </tr>
+			<tr>
+                <td>City:</td>
+                <td>
+                    <select id="city" name="city">
+                        <option value="" disabled selected>Select City</option>
+                        <option value="New York">New York</option>
+                        <option value="London">London</option>
+                        <option value="Tokyo">Tokyo</option>
+                        <option value="Delhi">Delhi</option>
+                        <option value="Paris">Paris</option>
+                    </select>
+                </td>
+            </tr>
+			<tr>
+                <td>Terms:</td>
+                <td>
+                    <input type="checkbox" id="terms" name="terms">
+                    <label for="terms">I agree to the terms and conditions</label>
+                </td>
+            </tr>
+			<tr>
+				<td>
+					<input type="submit">
+				</td>
+				<td>
+					<input type="reset">
+				</td>
+			</tr>
+		</table>
+		</form>
+	</body>
+</HTML>
+
